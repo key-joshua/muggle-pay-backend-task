@@ -1,8 +1,9 @@
 import httpStatus from 'http-status';
+import { Request, Response } from 'express';
 import responseUtils from '../../../utils/responseUtils';
 import { solanaTransaction } from '../../../utils/solanaUtils';
 
-const mugglePayWebhook = async (req, res) => {
+const mugglePayWebhook = async (req: Request, res: Response): Promise<Response> => {
   try {
     const body = req.body;
     console.log('✅ Transaction Received:', body);
@@ -15,7 +16,7 @@ const mugglePayWebhook = async (req, res) => {
   }
 };
 
-const getTransaction = async (req, res) => {
+const getTransaction = async (req: Request, res: Response): Promise<Response> => {
   try {
     const txHash = req.params.txhash;
     const txDetails = await solanaTransaction(txHash);
