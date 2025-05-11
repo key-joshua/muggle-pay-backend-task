@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import { Connection } from '@solana/web3.js';
 
 dotenv.config();
-const connection = new Connection( process.env.SOLONA_CLUSTER === 'mainnet-beta' ? 'https://api.mainnet-beta.solana.com' : 'https://api.devnet.solana.com', 'confirmed' );
+const connection = new Connection(process.env.SOLONA_CLUSTER === 'mainnet-beta' ? 'https://api.mainnet-beta.solana.com' : 'https://api.devnet.solana.com', { commitment: 'confirmed' });
 
 export async function solanaTransaction(txHash: string) {
   try {

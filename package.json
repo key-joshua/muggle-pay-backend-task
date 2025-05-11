@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "name": "muggle-pay-backend-task",
- "description": "This muggle pay backend APIs service for monitoring Solana USDC transactions using webhooks and querying transaction details.",
+  "description": "This muggle pay backend APIs service for monitoring Solana USDC transactions using webhooks and querying transaction details.",
   "scripts": {
     "lint": "eslint src",
     "dev": "nodemon ./src/index",
