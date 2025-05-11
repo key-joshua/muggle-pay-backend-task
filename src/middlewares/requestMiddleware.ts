@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import httpStatus from 'http-status';
-import responseUtils from '../utils/responseUtils';
 import { Request, Response } from 'express';
+import responseUtils from '../utils/responseUtils';
 
 const isHeaderValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req: Request, res: Response, next): Promise<Response> => {
     try {
