@@ -1,8 +1,9 @@
 import Joi from 'joi';
 import httpStatus from 'http-status';
 import responseUtils from '../utils/responseUtils';
+import { Request, Response } from 'express';
 
-const isHeaderValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req, res, next) => {
+const isHeaderValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req: Request, res: Response, next): Promise<Response> => {
     try {
         const { error } = schema.validate(req.headers, { abortEarly: false });
         if (error) {
@@ -18,7 +19,7 @@ const isHeaderValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async
     }
 };
 
-const isParamValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req, res, next) => {
+const isParamValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req: Request, res: Response, next): Promise<Response> => {
   try {
     const { error } = schema.validate(req.params, { abortEarly: false });
     if (error) {
@@ -34,7 +35,7 @@ const isParamValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async 
     }
 };
 
-const isQueryValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req, res, next) => {
+const isQueryValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req: Request, res: Response, next): Promise<Response> => {
   try {
     const { error } = schema.validate(req.query, { abortEarly: false });
     if (error) {
@@ -50,7 +51,7 @@ const isQueryValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async 
     }
 };
 
-const isBodyValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req, res, next) => {
+const isBodyValidation = (schema: Joi.ObjectSchema | Joi.ArraySchema) => async (req: Request, res: Response, next): Promise<Response> => {
     try {
       const { error } = schema.validate(req.body, { abortEarly: false });
       if (error) {
