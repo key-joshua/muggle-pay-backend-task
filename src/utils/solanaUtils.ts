@@ -5,8 +5,6 @@ dotenv.config();
 const connection = new Connection( process.env.SOLONA_CLUSTER === 'mainnet-beta' ? 'https://api.mainnet-beta.solana.com' : 'https://api.devnet.solana.com', 'confirmed' );
 
 export async function solanaTransaction(txHash: string) {
-  console.log('Fetching txHash:', txHash);
-  console.log('Using RPC URL:', process.env.SOLANA_RPC_URL);
   try {
     const txDetails = await connection.getTransaction(txHash, { commitment: 'confirmed' });
     if (!txDetails) throw new Error('Transaction not found');
